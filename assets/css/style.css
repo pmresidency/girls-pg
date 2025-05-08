@@ -633,6 +633,66 @@ section {
   color: #fff;
 }
 
+.amenity-item {
+  gap: 15px;
+}
+.amenity-icon {
+  font-size: 28px;
+  color: #ff5a5f;
+  margin-top: 4px;
+}
+.amenity-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.amenity-description {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.icon-wrapper {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.boxicon-style {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(0%) grayscale(100%);
+  opacity: 0.9;
+}
+
+/* Highlight active button */
+.btn.active {
+  background-color: #cc1616 !important;
+  color: #fff !important;
+}
+
+/* Ensure "Tap to See Pictures" text aligns properly */
+.see-pictures {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px; /* Add spacing between text and images */
+}
+
+.see-pictures .main-text {
+  display: block; /* "Tap to See Pictures" on one line */
+  font-weight: bold;
+}
+
+.see-pictures .sub-text {
+  display: block; /* Additional description on the second line */
+  font-size: 12px;
+  color: #6c757d; /* Lighter text */
+}
+
+
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/

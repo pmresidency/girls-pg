@@ -1,12 +1,12 @@
 /**
-* Template Name: Day - v2.2.1
-* Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Template Name: Day - v2.2.1
+ * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
+ * Author: BootstrapMade.com
+ * License: https://bootstrapmade.com/license/
+ */
+
 !(function($) {
   "use strict";
-
 
   // Preloader
   $(window).on('load', function() {
@@ -16,7 +16,6 @@
       });
     }
   });
-
 
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 1;
@@ -51,7 +50,7 @@
     }
   });
 
-  // Activate smooth scroll on page load with hash links in the url
+  // Activate smooth scroll on page load with hash links in the URL
   $(document).ready(function() {
     if (window.location.hash) {
       var initial_nav = window.location.hash;
@@ -108,7 +107,7 @@
 
     nav_sections.each(function() {
       var top = $(this).offset().top,
-        bottom = top + $(this).outerHeight();
+          bottom = top + $(this).outerHeight();
 
       if (cur_pos >= top && cur_pos <= bottom) {
         if (cur_pos <= bottom) {
@@ -154,7 +153,7 @@
     return false;
   });
 
-  // Porfolio isotope and filter
+  // Portfolio Isotope and Filters
   $(window).on('load', function() {
     var portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item'
@@ -169,10 +168,62 @@
       });
       aos_init();
     });
+  });
 
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
+  // Reset picture filer to 'All'
+  const resetFilterToAll = () => {
+    // Find and set the 'All' filter as active
+    const allFilter = $('#portfolio-flters li[data-filter="*"]');
+
+    $("#portfolio-flters li").removeClass("filter-active"); // Remove active class from other filters
+    allFilter.addClass("filter-active"); // Add active class to "All"
+
+    // Reset Isotope filter to display all items
+    $(".portfolio-container").isotope({ filter: "*" });
+  };
+
+
+  // Toggle Hanuman Nagar and Jat Colony Sections
+  $(document).ready(function () {
+    const showHanumanNagarBtn = $("#show-hanuman-nagar");
+    const showJatColonyBtn = $("#show-jat-colony");
+    const hanumanNagarSection = $(".pm-residency-hanuman-nagar");
+    const jatColonySection = $(".pm-residency-jat-colony");
+    let portfolioIsotope = $(".portfolio-container").isotope({
+      itemSelector: ".portfolio-item"
+    });
+
+    // Function to reset filter to "All"
+    const resetFilterToAll = () => {
+      const allFilter = $('#portfolio-flters li[data-filter="*"]');
+      $("#portfolio-flters li").removeClass("filter-active");
+      allFilter.addClass("filter-active");
+      portfolioIsotope.isotope({ filter: "*" });
+    };
+
+    // Function to toggle sections and reset filters
+    const toggleSectionVisibility = (showSection, hideSection, activeButton) => {
+      hideSection.hide();
+      showSection.fadeIn(400, function () {
+        portfolioIsotope.isotope("layout");
+      });
+
+      // Reset filter to "All"
+      resetFilterToAll();
+
+      // Update active button logic
+      $(".btn").removeClass("active"); // Remove the active class from all buttons
+      activeButton.addClass("active"); // Add the active class to the clicked button
+    };
+
+    // Event listener for Hanuman Nagar button
+    showHanumanNagarBtn.on("click", function () {
+      toggleSectionVisibility(hanumanNagarSection, jatColonySection, $(this));
+    });
+
+    // Event listener for Jat Colony button
+    showJatColonyBtn.on("click", function () {
+      toggleSectionVisibility(jatColonySection, hanumanNagarSection, $(this));
     });
   });
 
@@ -184,7 +235,7 @@
     items: 1
   });
 
-  // Init AOS
+  // Initiate AOS
   function aos_init() {
     AOS.init({
       duration: 1000,
